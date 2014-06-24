@@ -74,7 +74,8 @@ import Unsafe.Coerce
 data HList :: [*] -> * where
     HNil :: HList '[]
     (:::) :: t -> HList ts -> HList (t ': ts)
-  
+  deriving Typeable
+
 infixr 5 :::
 
 instance Show (HList '[]) where
@@ -109,9 +110,6 @@ instance (Monoid x, Monoid (HList xs)) => Monoid (HList (x ': xs)) where
 hlistTyCon :: [TypeRep] -> TyCon
 hlistTyCon xs = mkTyCon3 "vector-heterogenous" "Data.Vector.Heterogenous.HList" ("HList '"++show xs)
 
-instance (TypeList (HList xs)) => Typeable (HList xs) where
-    typeOf _ = mkTyConApp (hlistTyCon $ typeList (undefined::HList xs)) []
-    
 class TypeList t where
     typeList :: t -> [TypeRep]
     

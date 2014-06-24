@@ -129,10 +129,10 @@ instance (HLength (HList xs)) => HLength (HList (x ': xs)) where
 
 -- | For converting into a list
 
-class HList2List xs a | xs -> a where
+class HList2List xs a where
     hlist2list :: xs -> [a]
 instance HList2List (HList '[]) a where
-    hlist2list xs = []
+     hlist2list xs = []
 instance (HList2List (HList xs) a) => HList2List (HList (a ':xs)) a where
     hlist2list (x:::xs) = x:(hlist2list xs)    
 
@@ -265,7 +265,7 @@ type family Index (xs::[a]) (i::Nat1) :: a
 type instance Index (x ': xs) Zero = x
 type instance Index (x ': xs) (Succ i) = Index xs i
 
-type family ($) (f :: a -> b) (a :: a) :: b
+type family ($) (f :: a -> b) (c :: a) :: b
 type instance f $ a = f a
      
 type family (xs :: [a]) ++ (ys :: [a]) :: [a]

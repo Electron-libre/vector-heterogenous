@@ -15,7 +15,8 @@ bug-reports:         http://github.com/mikeizbicki/vector-heterogenous/issues
 Library
     Build-Depends:      
         base                        >= 3 && < 5,
-        vector                      >= 0.9
+        vector                      >= 0.9,
+        singletons
         
     hs-source-dirs:     src
     ghc-options:        

@@ -42,6 +42,8 @@ import GHC.TypeLits
 import Data.Vector.Heterogenous.HList
 import Data.Vector.Heterogenous.Unsafe
 
+import Data.Singletons.TH
+
 
 -------------------------------------------------------------------------------
 -- Vector
